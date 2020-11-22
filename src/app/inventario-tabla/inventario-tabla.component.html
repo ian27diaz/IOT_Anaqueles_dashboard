@@ -1,2 +1,14 @@
-<p>inventario-tabla works!</p>
-6
+
+<table id="anaqueles" class="table table-striped">
+    <tr>
+        <th scope="col" *ngFor="let column of headers">
+            {{column}}
+        </th>
+    </tr>
+
+    <tr *ngFor="let row of anaqueles">
+        <td *ngFor="let column of headers">
+            {{row[column]}}
+        </td>
+    </tr>
+</table>

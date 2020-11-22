@@ -7,3 +7,7 @@ h4 {
     height: 100%;
     text-align: center;
 }
+
+#contenedor_padre {
+    background-color: lightgray;
+}

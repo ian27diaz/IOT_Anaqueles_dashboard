@@ -1,13 +1,13 @@
-<div class="container-fluid">
+<div class="container-fluid" style="height: 100%;">
   <div class="row">
     <div class="col-sm-4">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-sm-8 col-xs-12">
       <h2>Existencias - Sucursal Plaza del Sol</h2>
-      <app-inventario-mapa></app-inventario-mapa>
-      <app-inventario-tabla></app-inventario-tabla>
-      <app-footer></app-footer>
+      <app-inventario-mapa *ngIf="this.nextOption == 'mapa'"></app-inventario-mapa>
+      <app-inventario-tabla *ngIf="this.nextOption == 'tabla'"></app-inventario-tabla>
+      <app-footer (nextOptionOutput)="changeDashboard($event)"></app-footer>
     </div>
   </div>
 </div>

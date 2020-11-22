@@ -12,4 +12,5 @@ export class InventarioMapaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

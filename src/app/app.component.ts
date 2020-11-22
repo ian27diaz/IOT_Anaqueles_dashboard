@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'anaqueles-dashboard';
+  nextOption = "tabla";
+
+  public changeDashboard(newOption: string) {
+    this.nextOption = newOption;
+  }
 }
