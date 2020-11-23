@@ -8,14 +8,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AnaquelServiceService {
 
+  anaquelesUrl = "https://hagsuwk150.execute-api.us-east-1.amazonaws.com/PROD";
+
   constructor(private http: HttpClient) { }
 
   getAnaqueles(): Observable<Anaquel[]> {
-    return of(ANAQUELES);
-    /*return this.http.get<Anaquel[]>(this.anaquelesUrl)
-        .pipe(
-          catchError(this.handleError<Anaquel[]>('getAnaqueles', []))
-        );
-    */
+    //return of(ANAQUELES);
+    return this.http.get<Anaquel[]>(this.anaquelesUrl + "/anaqueles")
+    
   }
 }

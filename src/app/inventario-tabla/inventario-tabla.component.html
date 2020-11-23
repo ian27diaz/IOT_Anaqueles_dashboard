@@ -7,8 +7,15 @@
     </tr>
 
     <tr *ngFor="let row of anaqueles">
-        <td *ngFor="let column of headers">
-            {{row[column]}}
-        </td>
+        <td>{{row.ID}}</td>
+        <td>{{row.Anaquel}}</td>
+        <td>{{row.Color}}</td>
+        <td>{{row.Modelo}}</td>
+        <td>{{row['Numeracion 22']}}</td>
+        <td>{{row['Numeracion 23']}}</td>
+        <td>{{row['Numeracion 24']}}</td>
+        <td>{{row['Numeracion 25']}}</td>
+        <td>{{row['Numeracion 26']}}</td>
+        <td>{{row['Total de pares']}}</td>
     </tr>
 </table>

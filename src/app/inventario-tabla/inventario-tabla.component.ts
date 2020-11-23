@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnaquelServiceService } from '../anaquel-service.service';
 import { Anaquel } from '../anaqueles';
-import { ANAQUELES } from '../mock-anaqueles'; 
 @Component({
   selector: 'app-inventario-tabla',
   templateUrl: './inventario-tabla.component.html',
@@ -10,7 +9,7 @@ import { ANAQUELES } from '../mock-anaqueles';
 export class InventarioTablaComponent implements OnInit {
 
   anaqueles: Anaquel[] = [];
-  headers = ["ID", "Anaquel", "Color", "Modelo", "Numeracion_22", "Numeracion_23", "Numeracion_24", "Numeracion_25", "Numeracion_26", "Total_de_pares"];
+  headers = ["ID", "Anaquel", "Color", "Modelo", "Numeracion 22", "Numeracion 23", "Numeracion 24", "Numeracion 25", "Numeracion 26", "Total de pares"];
   
   
   constructor(private anaquelService: AnaquelServiceService) { }

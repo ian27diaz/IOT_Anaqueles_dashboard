@@ -1,0 +1,7 @@
+{
+    "/PROD/*": {
+        "target": "https://hagsuwk150.execute-api.us-east-1.amazonaws.com",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

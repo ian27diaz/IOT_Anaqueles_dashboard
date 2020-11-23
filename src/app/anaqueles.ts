@@ -3,10 +3,10 @@ export interface Anaquel {
     Anaquel: number;
     Color: string;
     Modelo: number;
-    Numeracion_22: number;
-    Numeracion_23: number;
-    Numeracion_24: number;
-    Numeracion_25: number;
-    Numeracion_26: number;
-    Total_de_pares: number;
+    'Numeracion 22': number;
+    'Numeracion 23': number;
+    'Numeracion 24': number;
+    'Numeracion 25': number;
+    'Numeracion 26': number;
+    'Total de pares': number;
   }
