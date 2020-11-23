@@ -6,7 +6,7 @@
         </th>
     </tr>
 
-    <tr *ngFor="let row of anaqueles">
+    <tr *ngFor="let row of anaqueles | paginate: config">
         <td>{{row.ID}}</td>
         <td>{{row.Anaquel}}</td>
         <td>{{row.Color}}</td>
@@ -19,3 +19,4 @@
         <td>{{row['Total de pares']}}</td>
     </tr>
 </table>
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>

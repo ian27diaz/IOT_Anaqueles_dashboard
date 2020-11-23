@@ -11,16 +11,25 @@ export class InventarioTablaComponent implements OnInit {
   anaqueles: Anaquel[] = [];
   headers = ["ID", "Anaquel", "Color", "Modelo", "Numeracion 22", "Numeracion 23", "Numeracion 24", "Numeracion 25", "Numeracion 26", "Total de pares"];
   
-  
+  config: any;
+
   constructor(private anaquelService: AnaquelServiceService) { }
 
   ngOnInit(): void {
     this.getAnaqueles();
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1
+    };
   }
 
 
   getAnaqueles(): void {
     this.anaquelService.getAnaqueles()
       .subscribe(anaqueles => this.anaqueles = anaqueles);
+  }
+
+  pageChanged(event: any): void{
+    this.config.currentPage = event;
   }
 }
