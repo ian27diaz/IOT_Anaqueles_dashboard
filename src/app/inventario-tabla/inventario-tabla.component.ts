@@ -26,7 +26,10 @@ export class InventarioTablaComponent implements OnInit {
 
   getAnaqueles(): void {
     this.anaquelService.getAnaqueles()
-      .subscribe(anaqueles => this.anaqueles = anaqueles);
+      .subscribe(anaqueles => {
+        this.anaqueles = anaqueles;
+        this.anaqueles = this.anaquelService.filtrarPorSucursal(this.anaqueles, 'PS001');
+      });
   }
 
   pageChanged(event: any): void{

@@ -15,6 +15,10 @@ export class AnaquelServiceService {
   getAnaqueles(): Observable<Anaquel[]> {
     //return of(ANAQUELES);
     return this.http.get<Anaquel[]>(this.anaquelesUrl + "/anaqueles")
-    
+  }
+
+  filtrarPorSucursal(anaquelesList: Anaquel[], sucursal: string): Anaquel[] {
+    return anaquelesList.filter(o =>
+        Object.keys(o).some(k => o['Sucursal'].toLowerCase().includes(sucursal.toLowerCase())));
   }
 }

@@ -1,6 +1,6 @@
 import { Anaquel } from './anaqueles'; 
 
-export const ANAQUELES: Anaquel[] = [
+export const ANAQUELES: Anaquel[] = [ ]; /*
   { ID: "0001", Anaquel: 1, Color: 'Negro', Modelo: 422, 'Numeracion 22': 4,
   'Numeracion 23': 2, 'Numeracion 24': 2, 'Numeracion 25': 0, 'Numeracion 26': 6,'Total de pares': 12},
   { ID: "0005", Anaquel: 1, Color: 'Tinto', Modelo: 422, 'Numeracion 22': 4,
@@ -16,3 +16,5 @@ export const ANAQUELES: Anaquel[] = [
   { ID: "0042", Anaquel: 3, Color: 'Rojo', Modelo: 200, 'Numeracion 22': 2,
   'Numeracion 23': 2, 'Numeracion 24': 4, 'Numeracion 25': 5, 'Numeracion 26': 2,'Total de pares': 15}
 ];
+
+*/
