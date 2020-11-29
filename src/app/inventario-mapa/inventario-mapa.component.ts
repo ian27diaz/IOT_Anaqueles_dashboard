@@ -15,6 +15,7 @@ export class InventarioMapaComponent implements OnInit {
   modeloBusqueda: string = "";
   colorBusqueda: string = "";
   numeroBusqueda: number = -1;
+  origSize: number = -1;
   conteo_anaqueles: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   constructor(private anaquelService: AnaquelServiceService) { }
@@ -27,9 +28,10 @@ export class InventarioMapaComponent implements OnInit {
     this.anaquelService.getAnaqueles()
       .subscribe(anaqueles => {
         this.anaqueles = anaqueles;
-        this.anaqueles = this.anaquelService.filtrarPorSucursal(this.anaqueles, 'PS001');
-        this.anaqueles.forEach(val => this.copyAnaqueles.push(Object.assign({}, val)));
+        this.origSize = this.anaqueles.length;
 
+        this.anaqueles.forEach(val => this.copyAnaqueles.push(Object.assign({}, val)));
+        this.anaqueles = this.anaquelService.filtrarPorSucursal(this.anaqueles, 'PS001');
         this.populateConteoAnaqueles();
       });
   }
@@ -48,7 +50,7 @@ export class InventarioMapaComponent implements OnInit {
     console.log("Before: " + this.anaqueles.length);
     console.log(query.value.Numero);
     if(query.value.Modelo) {
-      this.anaqueles = this.copyAnaqueles.filter(o =>
+      this.anaqueles = this.anaqueles.filter(o =>
         Object.keys(o).some(k => 
           o['Modelo'] == Number(query.value.Modelo)));
     }
@@ -85,14 +87,41 @@ export class InventarioMapaComponent implements OnInit {
       return;
     }
     this.populateConteoAnaqueles();
+    if(this.anaqueles.length == 0) {
+      this.buscarEnOtrasSucursales(query.value.Modelo, query.value.Color, query.value.Numero);
+    }
     console.log("AFTER: " + this.anaqueles.length);
   }
 
+  buscarEnOtrasSucursales(modelo: number, color: string, numero: string): void {
+    console.log('Buscar en otras sucursales con: ' + modelo + ' ' + color + ' ' + numero);
+    this.anaqueles = [];
+
+    this.copyAnaqueles.forEach(anaquel => {
+      if(anaquel.Sucursal != 'PS001' && anaquel.Modelo == modelo) this.anaqueles.push(anaquel);
+    });
+
+    console.log(this.anaqueles);
+    console.log(this.copyAnaqueles);
+    
+    let map = new Map<string, number>();
+    if(this.anaqueles.length > 0) {
+      this.anaqueles.forEach(anaquel => {
+        if(!map.has(anaquel.Sucursal)) {
+          map.set(anaquel.Sucursal, anaquel["Total de pares"]);
+        }
+      });
+      let sucursalesArr = [...map.keys()];
+      alert('No se encontró ese modelo, pero en las siguientes sucursales si: ' + sucursalesArr);
+    }
+    this.resetBusqueda();
+  }
 
   resetBusqueda(): void {
     console.log("Reset: ");
     this.anaqueles = [];
     this.copyAnaqueles.forEach(val => this.anaqueles.push(Object.assign({}, val)));
+    this.anaqueles = this.anaquelService.filtrarPorSucursal(this.anaqueles, 'PS001')
     this.populateConteoAnaqueles();
   }
 
