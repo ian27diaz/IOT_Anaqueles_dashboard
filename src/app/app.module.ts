@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -17,15 +18,15 @@ import { FormsModule } from '@angular/forms';
     InventarioTablaComponent,
     InventarioMapaComponent,
     SidebarComponent,
-    FooterComponent
-  ],
+    FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,27 @@
-
 <table id="anaqueles" class="table table-striped table-bordered table-hover">
-    <tr>
-        <th scope="col" *ngFor="let column of headers">
-            {{column}}
-        </th>
-    </tr>
+  <tr>
+    <th scope="col" *ngFor="let column of headers">
+      {{column}}
+    </th>
+  </tr>
 
-    <tr *ngFor="let row of anaqueles | paginate: config">
-        <td>{{row.ID}}</td>
-        <td>{{row.Anaquel}}</td>
-        <td>{{row.Color}}</td>
-        <td>{{row.Modelo}}</td>
-        <td>{{row['Numeracion 22']}}</td>
-        <td>{{row['Numeracion 23']}}</td>
-        <td>{{row['Numeracion 24']}}</td>
-        <td>{{row['Numeracion 25']}}</td>
-        <td>{{row['Numeracion 26']}}</td>
-        <td>{{row['Total de pares']}}</td>
-    </tr>
+  <tr *ngFor="let row of anaqueles | paginate: config">
+    <td>{{row.ID}}</td>
+    <td>{{row.Anaquel}}</td>
+    <td>{{row.Color}}</td>
+    <td>{{row.Modelo}}</td>
+    <td>{{row['Numeracion 22']}}</td>
+    <td>{{row['Numeracion 23']}}</td>
+    <td>{{row['Numeracion 24']}}</td>
+    <td>{{row['Numeracion 25']}}</td>
+    <td>{{row['Numeracion 26']}}</td>
+    <td>{{row['Total de pares']}}</td>
+    <td>{{row['Fecha de entrada']}}</td>
+  </tr>
 </table>
+<div class="chartjs-container">
+  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins"
+  [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+</div>
+
 <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
