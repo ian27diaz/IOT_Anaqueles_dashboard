@@ -51,8 +51,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -121,6 +121,14 @@
             "production": {
               "devServerTarget": "anaqueles-dashboard:serve:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/anaqueles-dashboard",
+            "netlifyToken": "",
+            "siteId": "52710307-39cb-4f14-87b6-3532c18baee3"
           }
         }
       }

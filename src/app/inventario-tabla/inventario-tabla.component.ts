@@ -23,6 +23,19 @@ export class InventarioTablaComponent implements OnInit {
     { data: [], label: 'Gráfica mostrando la repartición en % del stock actual' }
   ];
 
+  //Grafica 2
+  barChartOptions2: ChartOptions = {
+    responsive: true,
+  };
+  barChartLabels2: Label[] = [];
+  barChartType2: ChartType = 'pie';
+  barChartLegend2 = true;
+  barChartPlugins2 = [];
+
+  barChartData2: ChartDataSets[] = [
+    { data: [], label: 'Gráfica mostrando la repartición en % del stock actual' }
+  ];
+
   anaqueles: Anaquel[] = [];
   headers = ["ID", "Anaquel", "Color", "Modelo", "Numeracion 22", "Numeracion 23", "Numeracion 24", "Numeracion 25", "Numeracion 26", "Total de pares", "Fecha de entrada"];
 
@@ -61,6 +74,7 @@ export class InventarioTablaComponent implements OnInit {
         this.anaqueles = anaqueles;
         this.anaqueles = this.anaquelService.filtrarPorSucursal(this.anaqueles, 'PS001');
         this.poblarGrafica();
+        this.poblarGrafica2();
       });
 
   }
@@ -87,6 +101,27 @@ export class InventarioTablaComponent implements OnInit {
     //this.chart.data.labels = [...map.keys()];
     this.barChartData[0].data = [...map.values()];
     this.barChartLabels = [...map.keys()];
+  }
+
+  poblarGrafica2(): void {
+    let map = new Map<string, number>();
+    this.anaqueles.forEach(anaquel => {
+      //  console.log(anaquel);
+      let existeModelo = map.has(String(anaquel.Modelo));
+
+      if (existeModelo) {
+        let valorAntiguo = map.get(String(anaquel.Modelo));
+        if(valorAntiguo != undefined) {
+        map.set(String(anaquel.Modelo), Number(anaquel['Anaquel']));
+      }
+      } else {
+        map.set(String(anaquel.Modelo), anaquel['Anaquel']);
+      }
+    });
+    //this.chart.data.datasets = [...map.values()];
+    //this.chart.data.labels = [...map.keys()];
+    this.barChartData2[0].data = [...map.values()];
+    this.barChartLabels2 = [...map.keys()];
   }
 
   pageChanged(event: any): void {
